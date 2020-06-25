@@ -10,13 +10,13 @@ import original.variation.impl.FizzBuzzImpl;
 public class FizzBuzzTest {
 	
 	public FizzBuzzImpl fizzBuzzImpl = new FizzBuzzImpl();
-	public static final StringBuffer RANGE_2_3 = new StringBuffer("2 fizz");
+	public static final StringBuffer RANGE_2_3 = new StringBuffer("2 alfresco");
 	public static final StringBuffer RANGE_15_15 = new StringBuffer("fizzbuzz");
 	public static final StringBuffer RANGE_5_5 = new StringBuffer("buzz");
-	public static final StringBuffer RANGE_1_20 = new StringBuffer("1 2 fizz 4 buzz fizz 7 8 fizz buzz 11 fizz 13 14 fizzbuzz 16 17 fizz 19 buzz");
+	public static final StringBuffer RANGE_1_20 = new StringBuffer("1 2 alfresco 4 buzz fizz 7 8 fizz buzz 11 fizz alfresco 14 fizzbuzz 16 17 fizz 19 buzz");
 
 	@Test
-	public void Should_Convert3ToFizz_IfRange2_3() {
+	public void Should_Convert3ToAlfresco_IfRange2_3() {
 		FizzBuzz fizzBuzz = new FizzBuzz();
 		fizzBuzz.setInferiorLimit(2);
 		fizzBuzz.setSuperiorLimit(3);
