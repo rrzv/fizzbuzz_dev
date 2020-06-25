@@ -1,4 +1,4 @@
-package original.variation.test;
+package alfresco.variation.test;
 
 import static org.junit.Assert.assertEquals;
 
