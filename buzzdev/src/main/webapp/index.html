@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>Fizz Buzz - Alfresco</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="inferiorLimit">Inferior
+				Limit:</label>
+			<div class="col-sm-3">
+				<input type="text" class="form-control" id="inferiorLimit"
+					placeholder="Enter inferior limit" required/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="superiorLimit">Superior
+				Limit:</label>
+			<div class="col-sm-3">
+				<input type="text" class="form-control" id="superiorLimit"
+					placeholder="Enter superior limit" required/>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-3">
+				<button type="button" class="btn btn-default"
+					onclick="callFizzBuzz()">Get FizzBuzz String</button>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-3">
+				<button type="button" class="btn btn-default"
+					onclick="callFizzBuzzWithReport()">Generate Report</button>
+			</div>
+		</div>
+	</form>
+	<div>
+		<label class="control-label col-sm-2" for="inferiorLimit">FizzBuzz
+			Result:</label>
+		<div class="col-sm-10">
+			<p id="resultFizzBuzz"></p>
+		</div>
+	</div>
+
+	<script>
+		function callFizzBuzz() {
+			var request = new XMLHttpRequest();
+			var inferiorLimit = document.getElementById("inferiorLimit").value;
+			var superiorLimit = document.getElementById("superiorLimit").value;
+			if (inferiorLimit == "" || superiorLimit == "") {
+				alert("Please insert range");
+				windows.stop();
+			}
+			var URL = "http://localhost:8085/buzzdev/rest/fizzbuzz/" + inferiorLimit + "-" + superiorLimit; 
+			request.open("GET", URL);
+			request.send();
+			request.onload = () => {
+				if (request.status == 200) {
+					document.getElementById("resultFizzBuzz").innerHTML = request.response;
+				} else {
+					alert('Error calling the REST API ' + request.status + " " + request.statusText);
+				}
+			}
+		}
+		
+		function callFizzBuzzWithReport() {
+			var request = new XMLHttpRequest();
+			var inferiorLimit = document.getElementById("inferiorLimit").value;
+			var superiorLimit = document.getElementById("superiorLimit").value;
+			if (inferiorLimit == "" || superiorLimit == "") {
+				alert("Please insert range");
+				windows.stop();
+			}
+			var URL = "http://localhost:8085/buzzdev/rest/fizzbuzz/report/" + inferiorLimit + "-" + superiorLimit; 
+			request.open("GET", URL);
+			request.send();
+			request.onload = () => {
+				if (request.status == 200) {
+					document.getElementById("resultFizzBuzz").innerHTML = request.response;
+				} else {
+					console.log('Error calling the REST API ' + request.status + " " + request.statusText);
+				}
+			}
+		}
+	</script>
+
+
+</body>
+</html>

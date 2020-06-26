@@ -17,12 +17,27 @@ public class FizzBuzzRespApiService {
 	@GET
 	@Path("/{range}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public StringBuffer getCategories(@PathParam("range") String range) {
+	public StringBuffer generateFizzBuzzString(@PathParam("range") String range) {
 		String[] parts = range.split("-");
 		
 		FizzBuzz fizzBuzz = new FizzBuzz();
 		fizzBuzz.setInferiorLimit(Integer.valueOf(parts[0]).intValue());
 		fizzBuzz.setSuperiorLimit(Integer.valueOf(parts[1]).intValue());
+		
+
+		return fizzBuzzImpl.generateFizzBuzzString(fizzBuzz);
+	}
+	
+	@GET
+	@Path("/report/{range}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public StringBuffer generateFizzBuzzStringWithReport(@PathParam("range") String range) {
+		String[] parts = range.split("-");
+		
+		FizzBuzz fizzBuzz = new FizzBuzz();
+		fizzBuzz.setInferiorLimit(Integer.valueOf(parts[0]).intValue());
+		fizzBuzz.setSuperiorLimit(Integer.valueOf(parts[1]).intValue());
+		fizzBuzz.setGenerateReport(true);
 		
 
 		return fizzBuzzImpl.generateFizzBuzzString(fizzBuzz);
