@@ -6,17 +6,6 @@ import fizzbuzz.dto.FizzBuzz;
 
 public class FizzBuzzImpl {
 
-	public static void main(String[] args) {
-		FizzBuzz fizzBuzz = new FizzBuzz();
-		fizzBuzz.setInferiorLimit(1);
-		fizzBuzz.setSuperiorLimit(20);
-		fizzBuzz.setGenerateReport(true);
-
-		FizzBuzzImpl fizzBuzzImpl = new FizzBuzzImpl();
-		System.out.println(fizzBuzzImpl.generateFizzBuzzString(fizzBuzz));
-
-	}
-
 	private int[] generateArrayOfNumbersInRange(int inferiorLimit, int superiorLimit) {
 		int[] outputArray = new int[superiorLimit - inferiorLimit + 1];
 
